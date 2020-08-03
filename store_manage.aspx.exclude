@@ -1,0 +1,83 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPagestore.master" AutoEventWireup="true" CodeFile="store_manage.aspx.cs" Inherits="store_manage" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+
+    <br />
+
+    <asp:Label ID="lbltesting" runat="server" Text="Label" Visible="false"></asp:Label>
+       
+      <asp:RadioButtonList ID="rblmanage" TextAlign="Right" runat="server" AutoPostBack="True" Font-Size="XX-Large" RepeatDirection="Horizontal" Font-Underline="true" Font-Bold="true" OnSelectedIndexChanged="rblmanage_SelectedIndexChanged" Height="19px" Width="280px">
+        <asp:ListItem>Add Coupons</asp:ListItem>  
+        <asp:ListItem>Edit Coupons</asp:ListItem> 
+        
+    </asp:RadioButtonList>
+        <div class='container'>
+    <asp:Label ID="lblmsg" runat="server"  Visible="false"
+               Text="Hurrrh,Coupon Add Sucessfully !" CssClass="label"/><br/>
+                 </div>
+      
+             
+        <br />
+        
+            <asp:Panel ID="edit" runat="server" Visible="false">
+         <fieldset>
+            <legend>EDIT COUPONS</legend>
+            <br />
+
+             <asp:GridView ID="dgv1" runat="server"  AutoGenerateColumns="false" DataKeyNames="co_id" OnRowDeleting="dgv1_RowDeleting" OnRowEditing="dgv1_RowEditing" OnRowUpdating="dgv1_RowUpdating">
+         <Columns>
+                   <asp:TemplateField HeaderText="Coupon Title " ItemStyle-Width="150">
+           <ItemTemplate>
+                        <asp:Label ID="lblName" runat="server" Text='<%# Eval("co_title") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtname" runat="server" Text='<%# Eval("co_title") %>' Width="140"></asp:TextBox>
+                    </EditItemTemplate>
+              </asp:TemplateField>
+             <asp:TemplateField HeaderText="Coupon Code " ItemStyle-Width="150">
+           <ItemTemplate>
+                        <asp:Label ID="lblccode" runat="server" Text='<%# Eval("co_code") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtccode" runat="server" Text='<%# Eval("co_code") %>' Width="140"></asp:TextBox>
+                    </EditItemTemplate>
+              </asp:TemplateField>
+          <asp:TemplateField HeaderText="Coupon Description" ItemStyle-Width="150">
+                    <ItemTemplate>
+                        <asp:Label ID="lblcdesc" runat="server" Text='<%# Eval("co_desc") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtcdesc" runat="server" Text='<%# Eval("co_desc") %>' Width="140"></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+             <asp:TemplateField HeaderText="Coupon Expiry Date" ItemStyle-Width="150">
+                    <ItemTemplate>
+                        <asp:Label ID="lblcexpir" runat="server" Text='<%# Eval("co_expiredate") %>'></asp:Label>
+                    </ItemTemplate>
+                    <EditItemTemplate>
+                        <asp:TextBox ID="txtcexpir" runat="server" Text='<%# Eval("co_expiredate") %>' Width="140"></asp:TextBox>
+                    </EditItemTemplate>
+                </asp:TemplateField>
+             <asp:TemplateField HeaderText="Coupon Category" ItemStyle-Width="150">
+                    <ItemTemplate>
+                        <asp:Label ID="lblccat" runat="server" Text='<%# Eval("cid") %>'></asp:Label>
+                    </ItemTemplate>
+                    
+                </asp:TemplateField>
+
+
+          <asp:CommandField ButtonType="Link" ShowEditButton="true" ShowDeleteButton="true"
+                    ItemStyle-Width="150" />
+            </Columns>
+        
+             </asp:GridView>
+
+
+             <br />
+              </fieldset>
+        </asp:Panel>
+        <br/>
+
+
+</asp:Content>
+
